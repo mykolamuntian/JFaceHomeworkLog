@@ -1,36 +1,26 @@
 package com.muntian;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 
+import com.muntian.ui.MainWindow;
+
 public class Main {
-
-	private static final String TITLE_OF_APP = "JFace homework log";
-
 	private static Display display;
 	private static Shell shell;
 
 	static {
 		display = new Display();
-		shell = new Shell(display, SWT.CLOSE | SWT.TITLE);
+		shell = new Shell(display, SWT.CLOSE | SWT.TITLE | SWT.MIN);
 	}
 
 	public static void main(String[] args) {
-		shell.setText(TITLE_OF_APP);
+		shell.setLayout(new FillLayout());
+		 
+		MainWindow mainWindow = new MainWindow(shell);
+		mainWindow.createComponents();
 
-//		GridLayout gridLayout = new GridLayout();
-//		shell.setLayout(gridLayout);
-
-		
-
-		shell.setLocation(750, 200);
-		shell.pack();
-		shell.open();
-		while (!shell.isDisposed()) {
-			if (!display.readAndDispatch())
-				display.sleep();
-		}
-		display.dispose();
 	}
 }
