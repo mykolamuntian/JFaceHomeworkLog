@@ -3,8 +3,13 @@ package com.muntian.ui;
 import org.eclipse.jface.action.MenuManager;
 import org.eclipse.jface.window.ApplicationWindow;
 import org.eclipse.swt.SWT;
-import org.eclipse.swt.layout.FillLayout;
+import org.eclipse.swt.layout.GridData;
+import org.eclipse.swt.layout.GridLayout;
+import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Control;
+import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
+
 import com.muntian.action.AboutMenuAction;
 import com.muntian.action.ExitMenuAction;
 import com.muntian.action.FindMenuAction;
@@ -13,21 +18,49 @@ import com.muntian.action.SaveMenuAction;
 public class MainWindow extends ApplicationWindow {
 
 	private static final String TITLE_OF_APP = "JFace homework log";
-	
+
 	public MainWindow(Shell parent) {
 		super(parent);
 	}
-	
-	public void createComponents() {
-//		LogPanel logPanel = new LogPanel(this.getShell(),SWT.NONE);
-//		FillLayout fillLayout = new FillLayout();
-//		logPanel.setLayout(fillLayout);
-		
-		setBlockOnOpen(true);
-		addMenuBar();
-		open();
+
+	public void addMenuBar() {
+		super.addMenuBar();
 	}
-	
+
+	@Override
+	protected Control createContents(Composite parent) {
+		GridLayout gridLayout = new GridLayout();
+		gridLayout.numColumns = 2;
+//		parent.setLayout(gridLayout);
+
+		Composite composite = new Composite(parent, SWT.NONE);
+//		sashForm.setOrientation(SWT.HORIZONTAL);
+//		sashForm.setSashWidth(10);
+
+		GridData gridData = new GridData(GridData.FILL_HORIZONTAL | GridData.FILL_VERTICAL);
+		composite.setLayoutData(gridData);
+		composite.setLayout(gridLayout);
+		
+		LogTablePanel logTablePanel = new LogTablePanel(composite, SWT.BORDER);
+		EditingPanel editingPanel = new EditingPanel(composite,SWT.BORDER);
+
+
+		// createBodyLeft(sashForm);
+		// createBodyRight(sashForm);
+
+		// LogPanel logPanel = new LogPanel(parent,SWT.BORDER);
+		/*
+		 * GridLayout gridLayout = new GridLayout();
+		 * parent.getShell().setLayout(gridLayout);
+		 */
+		/*
+		 * FillLayout fillLayout = new FillLayout(); fillLayout.marginHeight= 5;
+		 * fillLayout.marginWidth = 5; parent.getShell().setLayout(fillLayout);
+		 */
+//		parent.pack();
+		return parent;
+	}
+
 	@Override
 	protected MenuManager createMenuManager() {
 		MenuManager menuManager = new MenuManager();
@@ -40,10 +73,11 @@ public class MainWindow extends ApplicationWindow {
 	@Override
 	protected void configureShell(Shell shell) {
 		super.configureShell(shell);
-		shell.setSize(800, 350);
-	      shell.setText(TITLE_OF_APP);
+		shell.setLocation(600, 300);
+		shell.setSize(600, 300);
+		shell.setText(TITLE_OF_APP);
 	}
-	
+
 	private MenuManager createFileMenu() {
 		MenuManager menu = new MenuManager("&File", "Id01");
 		menu.add(new SaveMenuAction());
@@ -56,7 +90,7 @@ public class MainWindow extends ApplicationWindow {
 		menu.add(new FindMenuAction());
 		return menu;
 	}
-	
+
 	private MenuManager createHelpMenu() {
 		MenuManager menu = new MenuManager("&Help", "Id03");
 		menu.add(new AboutMenuAction());
