@@ -20,13 +20,11 @@ public class InputPanel extends Composite {
 	private Label labelSWTtaskDone;
 	private Button checkBoxSWTtaskDone;
 	
-	
 	public InputPanel(Composite parent, int style) {
 		super(parent, style);
 		createContent(parent);
 		initAction();
 	}
-	
 
 	public void createContent(Composite parent) {
 		setLayoutData(new GridData(SWT.FILL, SWT.FILL, true, true));
@@ -35,7 +33,6 @@ public class InputPanel extends Composite {
 		gridLayout.horizontalSpacing = 40;
 		setLayout(gridLayout);
 		setBackground(parent.getShell().getBackground());
-		
 		
 		labelName = new Label(this, SWT.NONE);
 		labelName.setText(NAME);
@@ -56,7 +53,6 @@ public class InputPanel extends Composite {
 		gridData.heightHint = 15;
 		gridData.horizontalIndent = -45;
 		textGroup.setLayoutData(gridData);
-		
 		
 		labelSWTtaskDone = new Label(this, SWT.NONE);
 		labelSWTtaskDone.setText(SWT_TASK_DONE);
