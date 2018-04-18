@@ -10,17 +10,32 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
 
+import com.muntian.Main;
 import com.muntian.action.AboutMenuAction;
 import com.muntian.action.ExitMenuAction;
 import com.muntian.action.FindMenuAction;
 import com.muntian.action.SaveMenuAction;
+import com.muntian.logic.ModelTableData;
 
 public class MainWindow extends ApplicationWindow {
 
 	private static final String TITLE_OF_APP = "JFace homework log";
 
-	public MainWindow(Shell parent) {
+	private static MainWindow instance;
+
+	private TablePanel logTablePanel;
+	private EditingPanel editingPanel;
+//	private ModelTableData modelTableData;
+
+	private MainWindow(Shell parent) {
 		super(parent);
+	}
+
+	public static MainWindow getInstance() {
+		if (instance == null) {
+			instance = new MainWindow(Main.getShell());
+		}
+		return instance;
 	}
 
 	public void addMenuBar() {
@@ -39,9 +54,11 @@ public class MainWindow extends ApplicationWindow {
 		GridData gridData = new GridData(GridData.FILL_HORIZONTAL | GridData.FILL_VERTICAL);
 		sashForm.setLayoutData(gridData);
 		sashForm.setLayout(gridLayout);
-		
-		TablePanel logTablePanel = new TablePanel(sashForm, SWT.BORDER);
-		EditingPanel editingPanel = new EditingPanel(sashForm,SWT.BORDER);
+
+		logTablePanel = new TablePanel(sashForm, SWT.BORDER);
+		editingPanel = new EditingPanel(sashForm, SWT.BORDER);
+
+//		modelTableData = new ModelTableData();
 		return parent;
 	}
 

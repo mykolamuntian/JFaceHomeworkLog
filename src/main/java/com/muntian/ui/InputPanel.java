@@ -5,7 +5,9 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
+import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 public class InputPanel extends Composite {
@@ -23,7 +25,7 @@ public class InputPanel extends Composite {
 	public InputPanel(Composite parent, int style) {
 		super(parent, style);
 		createContent(parent);
-		initAction();
+//		initAction();
 	}
 
 	public void createContent(Composite parent) {
@@ -70,8 +72,69 @@ public class InputPanel extends Composite {
 		checkBoxSWTtaskDone.setLayoutData(gridData);
 	}
 	
-	private void initAction() {
-		System.out.println("initAction() of InputPanel");
-		
-	}
+//	private boolean verifyInputNumber(Event e) {
+//		Text widget = (Text) e.widget;
+//		String wholNumber = widget.getText();
+//		String input = e.text;
+//		if (e.character == 8) {
+//			return true;
+//		} else if ((wholNumber.length() == 0) && input.equals(MathOperation.MINUS)) {
+//			return true;
+//		} else if (wholNumber.length() != 0 && !pointIsAdded(wholNumber) && input.equals(".")) {
+//			return true;
+//		} else {
+//			try {
+//				double digit = Double.parseDouble(input);
+//			} catch (NumberFormatException nfe) {
+//				return false;
+//			}
+//		}
+//
+//		return true;
+//	} 
+//	
+//	private boolean verifyInputName(Event e) {
+//		Text widget = (Text) e.widget;
+//		String wholNumber = widget.getText();
+//		String input = e.text;
+//		if (e.character == 8) {
+//			return true;
+//		} else if ((wholNumber.length() == 0) && input.equals(MathOperation.MINUS)) {
+//			return true;
+//		} else if (wholNumber.length() != 0 && !pointIsAdded(wholNumber) && input.equals(".")) {
+//			return true;
+//		} else {
+//			try {
+//				double digit = Double.parseDouble(input);
+//			} catch (NumberFormatException nfe) {
+//				return false;
+//			}
+//		}
+//
+//		return true;
+//	} 
+//	
+//	
+//	private class VerifyListenerForName implements Listener {
+//		@Override
+//		public void handleEvent(Event e) {
+//			if (verifyInputNumber(e) || e.character == 8) {
+//				System.out.println("All is good");
+//			} else {
+//				e.doit = false;
+//				System.out.println("incorrect input");
+//			}
+//		}
+//	}
+//	private void initAction() {
+//		labelName;
+//		 textName;
+//		Label labelGroup;
+//		Text textGroup;
+//		Label labelSWTtaskDone;
+//		Button checkBoxSWTtaskDone;
+//		
+//		System.out.println("initAction() of InputPanel");
+//		
+//	}
 }

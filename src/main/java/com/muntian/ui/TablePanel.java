@@ -11,13 +11,16 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 
+import com.muntian.logic.Observer;
 import com.muntian.ui.table.HomeworkContentProvider;
 import com.muntian.ui.table.HomeworkLabelProvider;
 import com.muntian.ui.table.HomeworkLogItem;
 
-public class TablePanel extends Composite {
+public class TablePanel extends Composite implements Observer {
 
 	private List<HomeworkLogItem> items;
+
+	private TableViewer tableViewer;
 	
 	public TablePanel(Composite parent, int style) {
 		super(parent, style);
@@ -28,7 +31,7 @@ public class TablePanel extends Composite {
 		FillLayout fillLayout = new FillLayout();
 		setLayout(fillLayout);
 		
-		final TableViewer tableViewer = new TableViewer(this, SWT.MULTI | SWT.FULL_SELECTION | SWT.BORDER);
+		tableViewer = new TableViewer(this, SWT.MULTI | SWT.FULL_SELECTION | SWT.BORDER);
 
 		TableLayout tableLayout = new TableLayout();
 		tableLayout.addColumnData(new ColumnWeightData(50,true));
@@ -38,8 +41,6 @@ public class TablePanel extends Composite {
 		tableViewer.getTable().setLayout(tableLayout);
 		tableViewer.getTable().setLinesVisible(true);
 		tableViewer.getTable().setHeaderVisible(true);
-		
-		
 		
 		TableViewerColumn column1 = new TableViewerColumn(tableViewer, SWT.LEFT);
 		column1.getColumn().setText("Name");
@@ -66,6 +67,10 @@ public class TablePanel extends Composite {
 		items.add(new HomeworkLogItem("Толик", "2", false));
 		items.add(new HomeworkLogItem("Толик", "2", false));
 		
+		tableViewer.setInput(items);
+	}
+
+	public void update(List<HomeworkLogItem> items) {
 		tableViewer.setInput(items);
 	}
 }

@@ -9,17 +9,20 @@ import com.muntian.ui.MainWindow;
 public class Main {
 	private static Display display;
 	private static Shell shell;
-
+	private static MainWindow mainWindow; 
 	static {
 		display = new Display();
 		shell = new Shell(display, SWT.CLOSE | SWT.TITLE | SWT.MIN);
+		mainWindow = MainWindow.getInstance();
 	}
 
 	public static void main(String[] args) {
-		
-		MainWindow mainWindow = new MainWindow(shell);
 		mainWindow.addMenuBar();
 		mainWindow.setBlockOnOpen(true);
 		mainWindow.open();
+	}
+
+	public static Shell getShell() {
+		return shell;
 	}
 }
