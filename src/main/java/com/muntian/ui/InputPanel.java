@@ -62,8 +62,8 @@ public class InputPanel extends Composite {
 		gridData.horizontalIndent = 108;
 		checkBoxSWTtaskDone.setLayoutData(gridData);
 
-		Label label = new Label(this, SWT.BORDER);
-		label.setText("InputPanel");
+//		Label label = new Label(this, SWT.BORDER);
+//		label.setText("InputPanel");
 	}
 	
 	private void initAction() {

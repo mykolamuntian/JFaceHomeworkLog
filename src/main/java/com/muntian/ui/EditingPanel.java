@@ -20,8 +20,8 @@ public class EditingPanel extends Composite {
 		GridLayout gridLayout = new GridLayout(1,true);
 		setLayout(gridLayout);
 		
-		Label label = new Label(this, SWT.BORDER);
-		label.setText("EditingPanel");
+//		Label label = new Label(this, SWT.BORDER);
+//		label.setText("EditingPanel");
 		
 		inputPanel = new InputPanel(this, SWT.BORDER);
 

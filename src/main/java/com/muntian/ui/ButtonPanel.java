@@ -27,8 +27,8 @@ public class ButtonPanel extends Composite {
 		layout.spacing = 10;
 		this.setLayout(layout);
 		
-		Label label = new Label(this, SWT.BORDER);
-		label.setText("ButtonPanel");
+//		Label label = new Label(this, SWT.BORDER);
+//		label.setText("ButtonPanel");
 		
 		btnNew = new Button(this, SWT.PUSH);
 		btnNew.setText("New");

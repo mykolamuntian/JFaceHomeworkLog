@@ -41,7 +41,7 @@ public class MainWindow extends ApplicationWindow {
 		composite.setLayoutData(gridData);
 		composite.setLayout(gridLayout);
 		
-		LogTablePanel logTablePanel = new LogTablePanel(composite, SWT.BORDER);
+		TablePanel logTablePanel = new TablePanel(composite, SWT.BORDER);
 		EditingPanel editingPanel = new EditingPanel(composite,SWT.BORDER);
 
 
@@ -74,7 +74,8 @@ public class MainWindow extends ApplicationWindow {
 	protected void configureShell(Shell shell) {
 		super.configureShell(shell);
 		shell.setLocation(600, 300);
-		shell.setSize(600, 300);
+//		shell.setSize(900, 300);
+//		shell.pack();
 		shell.setText(TITLE_OF_APP);
 	}
 
