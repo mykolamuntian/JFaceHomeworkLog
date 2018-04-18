@@ -5,7 +5,6 @@ import org.eclipse.swt.layout.RowData;
 import org.eclipse.swt.layout.RowLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Label;
 
 public class ButtonPanel extends Composite {
 
@@ -20,15 +19,12 @@ public class ButtonPanel extends Composite {
 		initAction();
 	}
 
-
 	private void createContent() {
 		RowLayout layout = new RowLayout();
 		layout.type = SWT.HORIZONTAL;
 		layout.spacing = 10;
+		layout.marginTop = 20;
 		this.setLayout(layout);
-		
-//		Label label = new Label(this, SWT.BORDER);
-//		label.setText("ButtonPanel");
 		
 		btnNew = new Button(this, SWT.PUSH);
 		btnNew.setText("New");
@@ -47,7 +43,6 @@ public class ButtonPanel extends Composite {
 		btnCancel = new Button(this, SWT.PUSH);
 		btnCancel.setText("Cancel");
 		btnCancel.setLayoutData(rowData);
-
 	}
 	
 	private void initAction() {

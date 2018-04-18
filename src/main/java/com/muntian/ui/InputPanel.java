@@ -31,6 +31,9 @@ public class InputPanel extends Composite {
 		GridLayout gridLayout = new GridLayout(2,false);
 		gridLayout.verticalSpacing = 10;
 		gridLayout.horizontalSpacing = 40;
+		gridLayout.marginLeft = 12;
+		gridLayout.marginTop = 10;
+		
 		setLayout(gridLayout);
 		setBackground(parent.getShell().getBackground());
 		
@@ -41,7 +44,7 @@ public class InputPanel extends Composite {
 		GridData gridData = new GridData();
 		gridData.widthHint = 200;
 		gridData.heightHint = 15;
-		gridData.horizontalIndent = -45;
+		gridData.horizontalIndent = -37;
 		textName.setLayoutData(gridData);
 		
 		labelGroup = new Label(this, SWT.NONE);
@@ -51,19 +54,20 @@ public class InputPanel extends Composite {
 		gridData = new GridData();
 		gridData.widthHint = 200;
 		gridData.heightHint = 15;
-		gridData.horizontalIndent = -45;
+		gridData.horizontalIndent = -37;
 		textGroup.setLayoutData(gridData);
 		
 		labelSWTtaskDone = new Label(this, SWT.NONE);
 		labelSWTtaskDone.setText(SWT_TASK_DONE);
+		gridData = new GridData();
+		gridData.verticalIndent = 10;
+		labelSWTtaskDone.setLayoutData(gridData);
 		
 		checkBoxSWTtaskDone = new Button(this, SWT.CHECK);
 		gridData = new GridData();
-		gridData.horizontalIndent = 108;
+		gridData.horizontalIndent = 125;
+		gridData.verticalIndent = 10;
 		checkBoxSWTtaskDone.setLayoutData(gridData);
-
-//		Label label = new Label(this, SWT.BORDER);
-//		label.setText("InputPanel");
 	}
 	
 	private void initAction() {

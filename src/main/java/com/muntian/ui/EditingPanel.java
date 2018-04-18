@@ -1,9 +1,9 @@
 package com.muntian.ui;
 
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Label;
 
 public class EditingPanel extends Composite {
 	
@@ -16,15 +16,17 @@ public class EditingPanel extends Composite {
 	}
 
 	public void createContent(Composite parent) {
-		
 		GridLayout gridLayout = new GridLayout(1,true);
 		setLayout(gridLayout);
 		
-//		Label label = new Label(this, SWT.BORDER);
-//		label.setText("EditingPanel");
-		
-		inputPanel = new InputPanel(this, SWT.BORDER);
+		inputPanel = new InputPanel(this, SWT.NONE);
+		GridData gridData = new GridData();
+		gridData.horizontalIndent = 200;
+		inputPanel.setLayoutData(gridData);
 
-		buttonPanel = new ButtonPanel(this, SWT.BORDER);
+		buttonPanel = new ButtonPanel(this, SWT.NONE);
+		gridData = new GridData();
+		gridData.horizontalIndent = 10;
+		inputPanel.setLayoutData(gridData);
 	}
 }
