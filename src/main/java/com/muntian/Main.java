@@ -21,6 +21,5 @@ public class Main {
 		mainWindow.addMenuBar();
 		mainWindow.setBlockOnOpen(true);
 		mainWindow.open();
-		shell.pack();
 	}
 }

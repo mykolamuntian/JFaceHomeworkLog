@@ -11,8 +11,9 @@ import org.eclipse.jface.viewers.TableViewerColumn;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Label;
 
+import com.muntian.ui.table.HomeworkContentProvider;
+import com.muntian.ui.table.HomeworkLabelProvider;
 import com.muntian.ui.table.HomeworkLogItem;
 
 public class TablePanel extends Composite {
@@ -31,12 +32,12 @@ public class TablePanel extends Composite {
 //		Label label = new Label(this, SWT.NONE);
 //		label.setText("TablePanel");
 		
-		final TableViewer tableViewer = new TableViewer(this, SWT.MULTI | SWT.V_SCROLL | SWT.FULL_SELECTION | SWT.BORDER);
+		final TableViewer tableViewer = new TableViewer(this, SWT.MULTI | SWT.FULL_SELECTION | SWT.BORDER);
 
 		TableLayout tableLayout = new TableLayout();
-		tableLayout.addColumnData(new ColumnWeightData(33,true));
-		tableLayout.addColumnData(new ColumnWeightData(33,true));
-		tableLayout.addColumnData(new ColumnWeightData(33,true));
+		tableLayout.addColumnData(new ColumnWeightData(50,true));
+		tableLayout.addColumnData(new ColumnWeightData(15,true));
+		tableLayout.addColumnData(new ColumnWeightData(35,true));
 		
 		tableViewer.getTable().setLayout(tableLayout);
 		tableViewer.getTable().setLinesVisible(true);
@@ -54,12 +55,20 @@ public class TablePanel extends Composite {
 		column3.getColumn().setWidth(110);
 		column3.getColumn().setText("SWT done");
 		
-		tableViewer.setContentProvider(new ArrayContentProvider()/*.getInstance()*/);
+		tableViewer.setContentProvider(new HomeworkContentProvider());
 		
+		tableViewer.setLabelProvider(new HomeworkLabelProvider());
 		
-		items = new ArrayList();
+		items = new ArrayList<HomeworkLogItem>();
+		
 		items.add(new HomeworkLogItem("Вася", "1", true));
 		items.add(new HomeworkLogItem("Петя", "1", false));
+		items.add(new HomeworkLogItem("Толик", "2", false));
+		items.add(new HomeworkLogItem("Толик", "2", false));
+		items.add(new HomeworkLogItem("Толик", "2", false));
+		items.add(new HomeworkLogItem("Толик", "2", false));
+		items.add(new HomeworkLogItem("Толик", "2", false));
+		items.add(new HomeworkLogItem("Толик", "2", false));
 		items.add(new HomeworkLogItem("Толик", "2", false));
 		
 		tableViewer.setInput(items);

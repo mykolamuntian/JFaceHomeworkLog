@@ -74,8 +74,7 @@ public class MainWindow extends ApplicationWindow {
 	protected void configureShell(Shell shell) {
 		super.configureShell(shell);
 		shell.setLocation(600, 300);
-//		shell.setSize(900, 300);
-//		shell.pack();
+		shell.setSize(800, 220);
 		shell.setText(TITLE_OF_APP);
 	}
 
