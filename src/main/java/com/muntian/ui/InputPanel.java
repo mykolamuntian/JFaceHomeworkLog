@@ -71,6 +71,31 @@ public class InputPanel extends Composite {
 		gridData.verticalIndent = 10;
 		checkBoxSWTtaskDone.setLayoutData(gridData);
 	}
+
+	public Text getTextName() {
+		return textName;
+	}
+	
+	public void setTextName(Text textName) {
+		this.textName = textName;
+	}
+
+	public Text getTextGroup() {
+		return textGroup;
+	}
+	
+	public void setTextGroup(Text textGroup) {
+		this.textGroup = textGroup;
+	}
+
+	public Button getCheckBoxSWTtaskDone() {
+		return checkBoxSWTtaskDone;
+	}
+	
+	public void setCheckBoxSWTtaskDone(Button checkBoxSWTtaskDone) {
+		this.checkBoxSWTtaskDone = checkBoxSWTtaskDone;
+	}
+	
 	
 //	private boolean verifyInputNumber(Event e) {
 //		Text widget = (Text) e.widget;

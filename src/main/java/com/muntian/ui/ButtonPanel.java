@@ -1,5 +1,10 @@
 package com.muntian.ui;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Writer;
+import java.util.List;
+
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.RowData;
 import org.eclipse.swt.layout.RowLayout;
@@ -8,20 +13,30 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 
+import com.google.gson.Gson;
 import com.muntian.logic.ModelTableData;
+import com.muntian.ui.table.HomeworkLogItem;
 
 public class ButtonPanel extends Composite {
 
-	private ModelTableData modelTableData;
+	// private ModelTableData modelTableData;
+	private List<HomeworkLogItem> items;
+	private HomeworkLogItem item;
+	private InputPanel inputPanel;
+	private TablePanel tablePanel;
 
-	private Button btnNew;
+	private Button btnAdd;
 	private Button btnSave;
 	private Button btnDelete;
-	private Button btnCancel;
+	private Button btnClear;
+
+	private String name;
+	private String group;
+	private boolean taskDone;
 
 	public ButtonPanel(Composite parent, int style) {
 		super(parent, style);
-		modelTableData = new ModelTableData();
+
 		createContent();
 		initAction();
 	}
@@ -33,11 +48,11 @@ public class ButtonPanel extends Composite {
 		layout.marginTop = 20;
 		this.setLayout(layout);
 
-		btnNew = new Button(this, SWT.PUSH);
-		btnNew.setText("New");
+		btnAdd = new Button(this, SWT.PUSH);
+		btnAdd.setText("Add");
 		RowData rowData = new RowData();
 		rowData.width = 70;
-		btnNew.setLayoutData(rowData);
+		btnAdd.setLayoutData(rowData);
 
 		btnSave = new Button(this, SWT.PUSH);
 		btnSave.setText("Save");
@@ -47,52 +62,70 @@ public class ButtonPanel extends Composite {
 		btnDelete.setText("Delete");
 		btnDelete.setLayoutData(rowData);
 
-		btnCancel = new Button(this, SWT.PUSH);
-		btnCancel.setText("Cancel");
-		btnCancel.setLayoutData(rowData);
+		btnClear = new Button(this, SWT.PUSH);
+		btnClear.setText("Clear");
+		btnClear.setLayoutData(rowData);
 	}
 
 	private void initAction() {
 		System.out.println("initAction() of ButtonPanel");
-		btnNew.addListener(SWT.Selection, new ListenerForButtonNew());
+		btnAdd.addListener(SWT.Selection, new ListenerForButtonAdd());
 		btnSave.addListener(SWT.Selection, new ListenerForButtonSave());
 		btnDelete.addListener(SWT.Selection, new ListenerForButtonDelete());
-		btnCancel.addListener(SWT.Selection, new ListenerForButtonCancel());
-	}
-	
-	private class ListenerForButtonNew implements Listener{
+		btnClear.addListener(SWT.Selection, new ListenerForButtonClear());
 
-		public void handleEvent(Event event) {
-			// TODO Auto-generated method stub
-			
-		}
-		
+		ModelTableData.getInstance().addObserver(MainWindow.getInstance().getTablePanel());
 	}
-	
-	private class ListenerForButtonSave implements Listener{
 
-		public void handleEvent(Event event) {
-			// TODO Auto-generated method stub
-			
+	private void writeLogToFile(String json) {
+		try (Writer writer = new FileWriter("log.txt")) {
+			writer.write(json);
+			// for (HomeworkLogItem item : items) {
+			// writer.write(item.getName() + System.lineSeparator());
+			// writer.write(item.getGroup() + System.lineSeparator());
+			// writer.write(item.isDone() + System.lineSeparator());
+			// }
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		
 	}
-	
-	private class ListenerForButtonDelete implements Listener{
 
+	private class ListenerForButtonAdd implements Listener {
 		public void handleEvent(Event event) {
-			// TODO Auto-generated method stub
-			
+			items = ModelTableData.getInstance().getItems();
+			inputPanel = MainWindow.getInstance().getEditingPanel().getInputPanel();
+			item = new HomeworkLogItem(inputPanel.getTextName().getText(), inputPanel.getTextGroup().getText(),
+					inputPanel.getCheckBoxSWTtaskDone().getSelection());
+			items.add(item);
+			ModelTableData.getInstance().setItems(items);
 		}
-		
 	}
-	
-	private class ListenerForButtonCancel implements Listener{
 
+	private class ListenerForButtonSave implements Listener {
 		public void handleEvent(Event event) {
-			// TODO Auto-generated method stub
-			
+			Gson gson = new Gson();
+			String json = gson.toJson(ModelTableData.getInstance().getItems());
+			writeLogToFile(json);
+			System.out.println(json);
 		}
-		
+	}
+
+	private class ListenerForButtonDelete implements Listener {
+		public void handleEvent(Event event) {
+			items = ModelTableData.getInstance().getItems();
+			List<HomeworkLogItem> selectedItems = MainWindow.getInstance().getTablePanel().getSelectedItems();
+			for (HomeworkLogItem item : selectedItems) {
+				items.remove(item);
+			}
+			ModelTableData.getInstance().setItems(items);
+		}
+	}
+
+	private class ListenerForButtonClear implements Listener {
+		public void handleEvent(Event event) {
+			MainWindow.getInstance().getEditingPanel().getInputPanel().getTextName().setText("");
+			MainWindow.getInstance().getEditingPanel().getInputPanel().getTextGroup().setText("");
+			MainWindow.getInstance().getEditingPanel().getInputPanel().getCheckBoxSWTtaskDone().setSelection(false);
+		}
 	}
 }

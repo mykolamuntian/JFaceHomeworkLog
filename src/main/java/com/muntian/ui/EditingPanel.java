@@ -29,4 +29,14 @@ public class EditingPanel extends Composite {
 		gridData.horizontalIndent = 10;
 		inputPanel.setLayoutData(gridData);
 	}
+
+	public InputPanel getInputPanel() {
+		return inputPanel;
+	}
+
+	public void setInputPanel(InputPanel inputPanel) {
+		this.inputPanel = inputPanel;
+	}
+	
+	
 }

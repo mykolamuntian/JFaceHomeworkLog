@@ -23,7 +23,7 @@ public class MainWindow extends ApplicationWindow {
 
 	private static MainWindow instance;
 
-	private TablePanel logTablePanel;
+	private TablePanel tablePanel;
 	private EditingPanel editingPanel;
 //	private ModelTableData modelTableData;
 
@@ -41,6 +41,20 @@ public class MainWindow extends ApplicationWindow {
 	public void addMenuBar() {
 		super.addMenuBar();
 	}
+	
+	public TablePanel getTablePanel() {
+		return tablePanel;
+	}
+
+	public EditingPanel getEditingPanel() {
+		return editingPanel;
+	}
+	
+	
+
+	public static String getTitleOfApp() {
+		return TITLE_OF_APP;
+	}
 
 	@Override
 	protected Control createContents(Composite parent) {
@@ -55,10 +69,12 @@ public class MainWindow extends ApplicationWindow {
 		sashForm.setLayoutData(gridData);
 		sashForm.setLayout(gridLayout);
 
-		logTablePanel = new TablePanel(sashForm, SWT.BORDER);
+		tablePanel = new TablePanel(sashForm, SWT.BORDER);
 		editingPanel = new EditingPanel(sashForm, SWT.BORDER);
+		
+//		initListeners();
 
-//		modelTableData = new ModelTableData();
+//		ModelTableData.getInstance().setItems(tablePanel.getItems());
 		return parent;
 	}
 
@@ -78,6 +94,10 @@ public class MainWindow extends ApplicationWindow {
 		shell.setSize(680, 240);
 		shell.setText(TITLE_OF_APP);
 	}
+	
+//	private void initListeners() {
+//		ModelTableData.getInstance().addObserver(MainWindow.getInstance().getTablePanel());
+//	}
 
 	private MenuManager createFileMenu() {
 		MenuManager menu = new MenuManager("&File", "Id01");

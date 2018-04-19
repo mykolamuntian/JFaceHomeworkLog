@@ -6,6 +6,7 @@ public class HomeworkLogItem {
 	private String group;
 	private boolean done;
 
+
 	public HomeworkLogItem(String name, String group, boolean done) {
 		super();
 		this.name = name;
@@ -36,4 +37,5 @@ public class HomeworkLogItem {
 	public void setDone(boolean done) {
 		this.done = done;
 	}
+
 }
