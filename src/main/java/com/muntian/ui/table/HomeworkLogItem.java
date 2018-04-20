@@ -38,4 +38,5 @@ public class HomeworkLogItem {
 		this.done = done;
 	}
 
+	
 }

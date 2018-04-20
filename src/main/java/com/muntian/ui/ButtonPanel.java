@@ -14,34 +14,33 @@ import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 
 import com.google.gson.Gson;
+import com.mintian.services.LogFileAccessManager;
 import com.muntian.logic.ModelTableData;
 import com.muntian.ui.table.HomeworkLogItem;
 
 public class ButtonPanel extends Composite {
 
-	// private ModelTableData modelTableData;
 	private List<HomeworkLogItem> items;
 	private HomeworkLogItem item;
 	private InputPanel inputPanel;
-	private TablePanel tablePanel;
+	private LogFileAccessManager logFileAccessManager;
+
+	private String fileName = "log.txt";
 
 	private Button btnAdd;
 	private Button btnSave;
 	private Button btnDelete;
 	private Button btnClear;
 
-	private String name;
-	private String group;
-	private boolean taskDone;
-
 	public ButtonPanel(Composite parent, int style) {
-		super(parent, style);
 
+		super(parent, style);
 		createContent();
 		initAction();
 	}
 
 	private void createContent() {
+
 		RowLayout layout = new RowLayout();
 		layout.type = SWT.HORIZONTAL;
 		layout.spacing = 10;
@@ -68,6 +67,7 @@ public class ButtonPanel extends Composite {
 	}
 
 	private void initAction() {
+
 		System.out.println("initAction() of ButtonPanel");
 		btnAdd.addListener(SWT.Selection, new ListenerForButtonAdd());
 		btnSave.addListener(SWT.Selection, new ListenerForButtonSave());
@@ -78,19 +78,16 @@ public class ButtonPanel extends Composite {
 	}
 
 	private void writeLogToFile(String json) {
+
 		try (Writer writer = new FileWriter("log.txt")) {
 			writer.write(json);
-			// for (HomeworkLogItem item : items) {
-			// writer.write(item.getName() + System.lineSeparator());
-			// writer.write(item.getGroup() + System.lineSeparator());
-			// writer.write(item.isDone() + System.lineSeparator());
-			// }
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	}
 
 	private class ListenerForButtonAdd implements Listener {
+
 		public void handleEvent(Event event) {
 			items = ModelTableData.getInstance().getItems();
 			inputPanel = MainWindow.getInstance().getEditingPanel().getInputPanel();
@@ -102,15 +99,15 @@ public class ButtonPanel extends Composite {
 	}
 
 	private class ListenerForButtonSave implements Listener {
+
 		public void handleEvent(Event event) {
-			Gson gson = new Gson();
-			String json = gson.toJson(ModelTableData.getInstance().getItems());
-			writeLogToFile(json);
-			System.out.println(json);
+			logFileAccessManager = new LogFileAccessManager();
+			logFileAccessManager.writeLogItemsToFile(fileName, ModelTableData.getInstance().getItems());
 		}
 	}
 
 	private class ListenerForButtonDelete implements Listener {
+
 		public void handleEvent(Event event) {
 			items = ModelTableData.getInstance().getItems();
 			List<HomeworkLogItem> selectedItems = MainWindow.getInstance().getTablePanel().getSelectedItems();
@@ -122,6 +119,7 @@ public class ButtonPanel extends Composite {
 	}
 
 	private class ListenerForButtonClear implements Listener {
+
 		public void handleEvent(Event event) {
 			MainWindow.getInstance().getEditingPanel().getInputPanel().getTextName().setText("");
 			MainWindow.getInstance().getEditingPanel().getInputPanel().getTextGroup().setText("");

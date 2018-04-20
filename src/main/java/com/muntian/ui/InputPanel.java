@@ -5,9 +5,7 @@ import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Composite;
-import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Label;
-import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Text;
 
 public class InputPanel extends Composite {
@@ -43,6 +41,7 @@ public class InputPanel extends Composite {
 		labelName.setText(NAME);
 		
 		textName = new Text(this, SWT.BORDER);
+		textName.setMessage("Enter a name");
 		GridData gridData = new GridData();
 		gridData.widthHint = 200;
 		gridData.heightHint = 15;
@@ -53,6 +52,7 @@ public class InputPanel extends Composite {
 		labelGroup.setText(GROUP);
 		
 		textGroup = new Text(this, SWT.BORDER);
+		textGroup.setMessage("Enter a group");
 		gridData = new GridData();
 		gridData.widthHint = 200;
 		gridData.heightHint = 15;
@@ -95,71 +95,4 @@ public class InputPanel extends Composite {
 	public void setCheckBoxSWTtaskDone(Button checkBoxSWTtaskDone) {
 		this.checkBoxSWTtaskDone = checkBoxSWTtaskDone;
 	}
-	
-	
-//	private boolean verifyInputNumber(Event e) {
-//		Text widget = (Text) e.widget;
-//		String wholNumber = widget.getText();
-//		String input = e.text;
-//		if (e.character == 8) {
-//			return true;
-//		} else if ((wholNumber.length() == 0) && input.equals(MathOperation.MINUS)) {
-//			return true;
-//		} else if (wholNumber.length() != 0 && !pointIsAdded(wholNumber) && input.equals(".")) {
-//			return true;
-//		} else {
-//			try {
-//				double digit = Double.parseDouble(input);
-//			} catch (NumberFormatException nfe) {
-//				return false;
-//			}
-//		}
-//
-//		return true;
-//	} 
-//	
-//	private boolean verifyInputName(Event e) {
-//		Text widget = (Text) e.widget;
-//		String wholNumber = widget.getText();
-//		String input = e.text;
-//		if (e.character == 8) {
-//			return true;
-//		} else if ((wholNumber.length() == 0) && input.equals(MathOperation.MINUS)) {
-//			return true;
-//		} else if (wholNumber.length() != 0 && !pointIsAdded(wholNumber) && input.equals(".")) {
-//			return true;
-//		} else {
-//			try {
-//				double digit = Double.parseDouble(input);
-//			} catch (NumberFormatException nfe) {
-//				return false;
-//			}
-//		}
-//
-//		return true;
-//	} 
-//	
-//	
-//	private class VerifyListenerForName implements Listener {
-//		@Override
-//		public void handleEvent(Event e) {
-//			if (verifyInputNumber(e) || e.character == 8) {
-//				System.out.println("All is good");
-//			} else {
-//				e.doit = false;
-//				System.out.println("incorrect input");
-//			}
-//		}
-//	}
-//	private void initAction() {
-//		labelName;
-//		 textName;
-//		Label labelGroup;
-//		Text textGroup;
-//		Label labelSWTtaskDone;
-//		Button checkBoxSWTtaskDone;
-//		
-//		System.out.println("initAction() of InputPanel");
-//		
-//	}
 }

@@ -15,7 +15,6 @@ import com.muntian.action.AboutMenuAction;
 import com.muntian.action.ExitMenuAction;
 import com.muntian.action.FindMenuAction;
 import com.muntian.action.SaveMenuAction;
-import com.muntian.logic.ModelTableData;
 
 public class MainWindow extends ApplicationWindow {
 

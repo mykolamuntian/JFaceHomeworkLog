@@ -37,6 +37,15 @@ public class EditingPanel extends Composite {
 	public void setInputPanel(InputPanel inputPanel) {
 		this.inputPanel = inputPanel;
 	}
+
+	public ButtonPanel getButtonPanel() {
+		return buttonPanel;
+	}
+
+	public void setButtonPanel(ButtonPanel buttonPanel) {
+		this.buttonPanel = buttonPanel;
+	}
+	
 	
 	
 }

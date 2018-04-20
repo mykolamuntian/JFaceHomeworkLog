@@ -10,6 +10,7 @@ public class Main {
 	private static Display display;
 	private static Shell shell;
 	private static MainWindow mainWindow; 
+	
 	static {
 		display = new Display();
 		shell = new Shell(display, SWT.CLOSE | SWT.TITLE | SWT.MIN);
@@ -17,6 +18,7 @@ public class Main {
 	}
 
 	public static void main(String[] args) {
+		
 		mainWindow.addMenuBar();
 		mainWindow.setBlockOnOpen(true);
 		mainWindow.open();
