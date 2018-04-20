@@ -23,7 +23,6 @@ public class InputPanel extends Composite {
 	public InputPanel(Composite parent, int style) {
 		super(parent, style);
 		createContent(parent);
-//		initAction();
 	}
 
 	public void createContent(Composite parent) {

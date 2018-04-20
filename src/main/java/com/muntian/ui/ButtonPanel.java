@@ -1,8 +1,5 @@
 package com.muntian.ui;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
 import java.util.List;
 
 import org.eclipse.swt.SWT;
@@ -13,7 +10,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 
-import com.google.gson.Gson;
 import com.mintian.services.LogFileAccessManager;
 import com.muntian.logic.ModelTableData;
 import com.muntian.ui.table.HomeworkLogItem;
@@ -75,15 +71,6 @@ public class ButtonPanel extends Composite {
 		btnClear.addListener(SWT.Selection, new ListenerForButtonClear());
 
 		ModelTableData.getInstance().addObserver(MainWindow.getInstance().getTablePanel());
-	}
-
-	private void writeLogToFile(String json) {
-
-		try (Writer writer = new FileWriter("log.txt")) {
-			writer.write(json);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
 	}
 
 	private class ListenerForButtonAdd implements Listener {

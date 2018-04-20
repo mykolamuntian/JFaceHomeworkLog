@@ -45,7 +45,4 @@ public class EditingPanel extends Composite {
 	public void setButtonPanel(ButtonPanel buttonPanel) {
 		this.buttonPanel = buttonPanel;
 	}
-	
-	
-	
 }

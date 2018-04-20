@@ -61,11 +61,10 @@ public class TablePanel extends Composite implements Observer {
 
 		TableViewerColumn column2 = new TableViewerColumn(tableViewer, SWT.RIGHT);
 		column2.getColumn().setText("Group");
-//		column2.getColumn().addListener(SWT.Selection, new ListenerForGroupColumn());
 
 		TableViewerColumn column3 = new TableViewerColumn(tableViewer, SWT.LEFT);
 		column3.getColumn().setText("SWT done");
-
+		
 		tableViewer.setContentProvider(new HomeworkContentProvider());
 
 		tableViewer.setLabelProvider(new HomeworkLabelProvider());
@@ -130,6 +129,5 @@ public class TablePanel extends Composite implements Observer {
 			IStructuredSelection selectedLines = (IStructuredSelection) event.getSelection();
 			selectedItems = selectedLines.toList();
 		}
-
 	}
 }

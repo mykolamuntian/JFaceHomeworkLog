@@ -24,7 +24,6 @@ public class MainWindow extends ApplicationWindow {
 
 	private TablePanel tablePanel;
 	private EditingPanel editingPanel;
-//	private ModelTableData modelTableData;
 
 	private MainWindow(Shell parent) {
 		super(parent);
@@ -48,8 +47,6 @@ public class MainWindow extends ApplicationWindow {
 	public EditingPanel getEditingPanel() {
 		return editingPanel;
 	}
-	
-	
 
 	public static String getTitleOfApp() {
 		return TITLE_OF_APP;
@@ -71,9 +68,6 @@ public class MainWindow extends ApplicationWindow {
 		tablePanel = new TablePanel(sashForm, SWT.BORDER);
 		editingPanel = new EditingPanel(sashForm, SWT.BORDER);
 		
-//		initListeners();
-
-//		ModelTableData.getInstance().setItems(tablePanel.getItems());
 		return parent;
 	}
 
@@ -94,10 +88,6 @@ public class MainWindow extends ApplicationWindow {
 		shell.setText(TITLE_OF_APP);
 	}
 	
-//	private void initListeners() {
-//		ModelTableData.getInstance().addObserver(MainWindow.getInstance().getTablePanel());
-//	}
-
 	private MenuManager createFileMenu() {
 		MenuManager menu = new MenuManager("&File", "Id01");
 		menu.add(new SaveMenuAction());
