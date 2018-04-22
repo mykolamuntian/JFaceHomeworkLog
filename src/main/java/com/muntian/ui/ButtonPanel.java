@@ -10,8 +10,8 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 
-import com.mintian.services.LogFileAccessManager;
 import com.muntian.logic.ModelTableData;
+import com.muntian.services.LogFileAccessManager;
 import com.muntian.ui.table.HomeworkLogItem;
 
 public class ButtonPanel extends Composite {

@@ -3,7 +3,7 @@ package com.muntian.logic;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mintian.services.LogFileAccessManager;
+import com.muntian.services.LogFileAccessManager;
 import com.muntian.ui.table.HomeworkLogItem;
 
 public class ModelTableData implements Observable {

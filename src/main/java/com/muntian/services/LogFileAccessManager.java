@@ -1,4 +1,4 @@
-package com.mintian.services;
+package com.muntian.services;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
