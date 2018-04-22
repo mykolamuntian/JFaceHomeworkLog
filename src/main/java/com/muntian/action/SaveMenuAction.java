@@ -2,6 +2,9 @@ package com.muntian.action;
 
 import org.eclipse.jface.action.Action;
 
+import com.muntian.logic.ModelTableData;
+import com.muntian.services.LogFileAccessManager;
+
 public class SaveMenuAction extends Action{
 	public String getText() {
 		return "&Save";
@@ -9,5 +12,6 @@ public class SaveMenuAction extends Action{
 	
 	public void run() {
 		System.out.println("Save menu action");
+		new LogFileAccessManager().writeLogItemsToFile("log.txt", ModelTableData.getInstance().getItems());
 	}
 }

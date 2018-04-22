@@ -2,6 +2,7 @@ package com.muntian.ui;
 
 import java.util.List;
 
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.RowData;
 import org.eclipse.swt.layout.RowLayout;
@@ -10,12 +11,18 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 
+import com.muntian.Main;
+import com.muntian.exceptions.GroupNumberInputException;
+import com.muntian.exceptions.NameInputException;
 import com.muntian.logic.ModelTableData;
+import com.muntian.services.InputVerifier;
 import com.muntian.services.LogFileAccessManager;
 import com.muntian.ui.table.HomeworkLogItem;
 
 public class ButtonPanel extends Composite {
 
+	private static final String INCORRECT_NAME_INPUT = "Incorrect name input";
+	private static final String INCORRECT_GROUP_NUMBER_INPUT = "Incorrect group number input";
 	private List<HomeworkLogItem> items;
 	private HomeworkLogItem item;
 	private InputPanel inputPanel;
@@ -73,6 +80,16 @@ public class ButtonPanel extends Composite {
 		ModelTableData.getInstance().addObserver(MainWindow.getInstance().getTablePanel());
 	}
 
+	private boolean verifyInput(HomeworkLogItem item) {
+		if (!InputVerifier.verifyInputName(item.getName())) {
+			throw new NameInputException(INCORRECT_NAME_INPUT);
+		}
+		if (!InputVerifier.verifyInputGroupNumber(item.getGroup())) {
+			throw new GroupNumberInputException(INCORRECT_GROUP_NUMBER_INPUT);
+		}
+		return true;
+	}
+
 	private class ListenerForButtonAdd implements Listener {
 
 		public void handleEvent(Event event) {
@@ -80,8 +97,15 @@ public class ButtonPanel extends Composite {
 			inputPanel = MainWindow.getInstance().getEditingPanel().getInputPanel();
 			item = new HomeworkLogItem(inputPanel.getTextName().getText(), inputPanel.getTextGroup().getText(),
 					inputPanel.getCheckBoxSWTtaskDone().getSelection());
-			items.add(item);
-			ModelTableData.getInstance().setItems(items);
+			try {
+				verifyInput(item);
+				items.add(item);
+				ModelTableData.getInstance().setItems(items);
+			} catch (NameInputException | GroupNumberInputException e) {
+				MessageDialog dialog = new MessageDialog(Main.getShell(), "Input error", null, e.getMessage(),
+						MessageDialog.ERROR, new String[] { "Close" }, 0);
+				dialog.open();
+			}
 		}
 	}
 

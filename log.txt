@@ -1,1 +1,1 @@
-[{"name":"Вася","group":"1","done":true},{"name":"Вася","group":"1","done":false},{"name":"Вера","group":"2","done":true},{"name":"Гриша","group":"1","done":true},{"name":"Дима","group":"2","done":false},{"name":"Денис","group":"3","done":true}]
+[{"name":"Вася","group":"1","done":true},{"name":"Вера","group":"2","done":true},{"name":"Гриша","group":"1","done":true},{"name":"Дима","group":"2","done":false},{"name":"Денис","group":"3","done":true},{"name":"Аня","group":"5","done":false},{"name":"Сергей","group":"2","done":false},{"name":"Лаврентий","group":"3","done":true}]
