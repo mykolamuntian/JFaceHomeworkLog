@@ -2,8 +2,8 @@ package com.muntian.ui.table;
 
 public enum CheckedState {
 	
-	CHECKED("checked.png"),
-	UNCHECKED("unchecked.png") ;
+	CHECKED("src/main/resources/img/checked.png"),
+	UNCHECKED("src/main/resources/img/unchecked.png") ;
 
 	String fileName;
 	
