@@ -46,6 +46,7 @@ public class InputPanel extends Composite {
 		gridData.heightHint = 15;
 		gridData.horizontalIndent = -37;
 		textName.setLayoutData(gridData);
+		textName.setToolTipText("Test !!!!");
 		
 		labelGroup = new Label(this, SWT.NONE);
 		labelGroup.setText(GROUP);

@@ -64,7 +64,7 @@ public class TablePanel extends Composite implements Observer {
 
 		TableViewerColumn column3 = new TableViewerColumn(tableViewer, SWT.LEFT);
 		column3.getColumn().setText("SWT done");
-		
+
 		tableViewer.setContentProvider(new HomeworkContentProvider());
 
 		tableViewer.setLabelProvider(new HomeworkLabelProvider());
