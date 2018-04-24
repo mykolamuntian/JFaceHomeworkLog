@@ -55,18 +55,22 @@ public class ButtonPanel extends Composite {
 		RowData rowData = new RowData();
 		rowData.width = 70;
 		btnAdd.setLayoutData(rowData);
-
+		btnAdd.setToolTipText("Add a new student to the log");
+		
 		btnSave = new Button(this, SWT.PUSH);
 		btnSave.setText("Save");
 		btnSave.setLayoutData(rowData);
+		btnSave.setToolTipText("Save current log state to a file");
 
 		btnDelete = new Button(this, SWT.PUSH);
 		btnDelete.setText("Delete");
 		btnDelete.setLayoutData(rowData);
+		btnDelete.setToolTipText("Remove selected student data from log");
 
 		btnClear = new Button(this, SWT.PUSH);
 		btnClear.setText("Clear");
 		btnClear.setLayoutData(rowData);
+		btnClear.setToolTipText("Clear input fields");
 	}
 
 	private void initAction() {

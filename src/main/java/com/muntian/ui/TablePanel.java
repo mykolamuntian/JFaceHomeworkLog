@@ -58,12 +58,15 @@ public class TablePanel extends Composite implements Observer {
 
 		TableViewerColumn column1 = new TableViewerColumn(tableViewer, SWT.LEFT);
 		column1.getColumn().setText("Name");
+		column1.getColumn().setToolTipText("Sort by name");
 
 		TableViewerColumn column2 = new TableViewerColumn(tableViewer, SWT.RIGHT);
 		column2.getColumn().setText("Group");
-
+		column2.getColumn().setToolTipText("Sort by group number");
+		
 		TableViewerColumn column3 = new TableViewerColumn(tableViewer, SWT.LEFT);
 		column3.getColumn().setText("SWT done");
+		column3.getColumn().setToolTipText("Sort by completed task");
 
 		tableViewer.setContentProvider(new HomeworkContentProvider());
 

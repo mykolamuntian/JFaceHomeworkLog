@@ -40,24 +40,24 @@ public class InputPanel extends Composite {
 		labelName.setText(NAME);
 		
 		textName = new Text(this, SWT.BORDER);
-		textName.setMessage("Enter a name");
 		GridData gridData = new GridData();
 		gridData.widthHint = 200;
 		gridData.heightHint = 15;
 		gridData.horizontalIndent = -37;
 		textName.setLayoutData(gridData);
-		textName.setToolTipText("Test !!!!");
+		textName.setToolTipText("Student name");
 		
 		labelGroup = new Label(this, SWT.NONE);
 		labelGroup.setText(GROUP);
 		
 		textGroup = new Text(this, SWT.BORDER);
-		textGroup.setMessage("Enter a group");
 		gridData = new GridData();
 		gridData.widthHint = 200;
 		gridData.heightHint = 15;
 		gridData.horizontalIndent = -37;
 		textGroup.setLayoutData(gridData);
+		textGroup.setToolTipText("Student group");
+
 		
 		labelSWTtaskDone = new Label(this, SWT.NONE);
 		labelSWTtaskDone.setText(SWT_TASK_DONE);
@@ -70,6 +70,7 @@ public class InputPanel extends Composite {
 		gridData.horizontalIndent = 125;
 		gridData.verticalIndent = 10;
 		checkBoxSWTtaskDone.setLayoutData(gridData);
+		checkBoxSWTtaskDone.setToolTipText("Check if the task is done");
 	}
 
 	public Text getTextName() {
