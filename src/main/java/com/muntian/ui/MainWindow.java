@@ -31,7 +31,7 @@ public class MainWindow extends ApplicationWindow {
 
 	public static MainWindow getInstance() {
 		if (instance == null) {
-			instance = new MainWindow(Main.getShell());
+			instance = new MainWindow(null);
 		}
 		return instance;
 	}

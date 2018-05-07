@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
 import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gson.Gson;
@@ -37,16 +38,23 @@ public class LogFileAccessManager {
 
 	public List<HomeworkLogItem> readLogItemsFromFile(String fileName) {
 		List<HomeworkLogItem> items;
-		String jsonStr = "NULL";
 		try (Reader reader = new FileReader(fileName)) {
 			BufferedReader bufferedReader = new BufferedReader(reader);
-			jsonStr = bufferedReader.readLine();
+			String jsonStr = bufferedReader.readLine();
+			if (jsonStr == null) {
+				items = getDefaultLogItems();
+			} else {
+				items = new Gson().fromJson(jsonStr, itemsListType);
+			}
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			items = getDefaultLogItems();
 		} catch (IOException e) {
-			e.printStackTrace();
+			items = getDefaultLogItems();
 		}
-		items = new Gson().fromJson(jsonStr, itemsListType);
 		return items;
+	}
+	
+	private List<HomeworkLogItem> getDefaultLogItems() {
+		return new ArrayList<HomeworkLogItem>();
 	}
 }

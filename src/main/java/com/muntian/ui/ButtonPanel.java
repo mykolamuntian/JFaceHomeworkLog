@@ -11,7 +11,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Event;
 import org.eclipse.swt.widgets.Listener;
 
-import com.muntian.Main;
 import com.muntian.exceptions.GroupNumberInputException;
 import com.muntian.exceptions.NameInputException;
 import com.muntian.logic.ModelTableData;
@@ -106,7 +105,7 @@ public class ButtonPanel extends Composite {
 				items.add(item);
 				ModelTableData.getInstance().setItems(items);
 			} catch (NameInputException | GroupNumberInputException e) {
-				MessageDialog dialog = new MessageDialog(Main.getShell(), "Input error", null, e.getMessage(),
+				MessageDialog dialog = new MessageDialog(MainWindow.getInstance().getShell(), "Input error", null, e.getMessage(),
 						MessageDialog.ERROR, new String[] { "Close" }, 0);
 				dialog.open();
 			}
