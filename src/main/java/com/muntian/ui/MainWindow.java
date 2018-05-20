@@ -10,7 +10,6 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Shell;
 
-import com.muntian.Main;
 import com.muntian.action.AboutMenuAction;
 import com.muntian.action.ExitMenuAction;
 import com.muntian.action.FindMenuAction;

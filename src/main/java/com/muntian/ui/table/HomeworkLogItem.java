@@ -37,6 +37,4 @@ public class HomeworkLogItem {
 	public void setDone(boolean done) {
 		this.done = done;
 	}
-
-	
 }
