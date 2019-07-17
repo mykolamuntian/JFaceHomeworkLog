@@ -12,6 +12,6 @@ public class SaveMenuAction extends Action{
 	
 	public void run() {
 		System.out.println("Save menu action");
-		new LogFileAccessManager().writeLogItemsToFile("log.txt", ModelTableData.getInstance().getItems());
+		new LogFileAccessManager().writeLogItemsToFile("log.json", ModelTableData.getInstance().getItems());
 	}
 }

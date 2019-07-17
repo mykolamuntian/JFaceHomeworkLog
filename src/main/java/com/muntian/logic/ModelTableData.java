@@ -1,9 +1,5 @@
 package com.muntian.logic;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +10,7 @@ public class ModelTableData implements Observable {
 	private List<Observer> observers = new ArrayList<Observer>();
 	private List<HomeworkLogItem> items;
 	private LogFileAccessManager logFileAccessManager;
-	private String fileName = "log.txt";
+	private String fileName = "log.json";
 	private static ModelTableData instance;
 
 	private ModelTableData() {
@@ -53,13 +49,6 @@ public class ModelTableData implements Observable {
 	}
 
 	private void initTableModel(String fileName) {
-//		File file = new File(fileName);
-//		if (file.exists()) {
-//			
-//		}
-//		
-//		
-
 		logFileAccessManager = new LogFileAccessManager();
 		items = logFileAccessManager.readLogItemsFromFile(fileName);
 	}

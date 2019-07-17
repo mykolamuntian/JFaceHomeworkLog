@@ -27,7 +27,7 @@ public class ButtonPanel extends Composite {
 	private InputPanel inputPanel;
 	private LogFileAccessManager logFileAccessManager;
 
-	private String fileName = "log.txt";
+	private String fileName = "log.json";
 
 	private Button btnAdd;
 	private Button btnSave;
