@@ -3,7 +3,7 @@ package com.muntian.services;
 public class InputVerifier {
 	
 	public static boolean verifyInputName(String name) {
-		return name.matches("[A-йн-п][р-џ]*");
+		return name.matches("[A-Z][a-z]*");
 
 	}
 	
