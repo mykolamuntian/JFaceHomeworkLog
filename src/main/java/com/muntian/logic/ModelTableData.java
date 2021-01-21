@@ -10,7 +10,7 @@ public class ModelTableData implements Observable {
 	private List<Observer> observers = new ArrayList<Observer>();
 	private List<HomeworkLogItem> items;
 	private LogFileAccessManager logFileAccessManager;
-	private String fileName = "log.txt";
+	private String fileName = "log.json";
 	private static ModelTableData instance;
 
 	private ModelTableData() {

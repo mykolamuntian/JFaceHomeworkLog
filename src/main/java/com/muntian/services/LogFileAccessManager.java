@@ -13,7 +13,6 @@ import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import com.muntian.logic.ModelTableData;
 import com.muntian.ui.table.HomeworkLogItem;
 
 public class LogFileAccessManager {
@@ -25,9 +24,9 @@ public class LogFileAccessManager {
 		super();
 	}
 
-	public void writeLogItemsToFile(String fileName, List items) {
+	public void writeLogItemsToFile(String fileName, List<HomeworkLogItem> items) {
 		Gson gson = new Gson();
-		String jsonStr = gson.toJson(ModelTableData.getInstance().getItems());
+		String jsonStr = gson.toJson(items);
 		System.out.println(jsonStr);
 		try (Writer writer = new FileWriter(fileName)) {
 			writer.write(jsonStr);
@@ -35,6 +34,18 @@ public class LogFileAccessManager {
 			e.printStackTrace();
 		}
 	}
+	
+//	public static void writeStudentToFile(Student student) {
+//        try (Writer writer = new FileWriter(student.getName() + ".txt")) {
+//            writer.write(student.getName() + System.lineSeparator());
+//            writer.write(student.getLastName() + System.lineSeparator());
+//            for (int i = 0; i < student.getMarks().length; i++) {
+//                writer.write(student.getMarks()[i] + System.lineSeparator());
+//            }
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
 	public List<HomeworkLogItem> readLogItemsFromFile(String fileName) {
 		List<HomeworkLogItem> items;
