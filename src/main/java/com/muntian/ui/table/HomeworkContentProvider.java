@@ -14,7 +14,7 @@ public class HomeworkContentProvider implements IStructuredContentProvider {
 	}
 
 	public Object[] getElements(Object inputElement) {
-		return ((List) inputElement).toArray();
+		return ((List<HomeworkLogItem>) inputElement).toArray();
 	}
 
 }

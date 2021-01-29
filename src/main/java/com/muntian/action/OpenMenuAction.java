@@ -1,9 +1,6 @@
 package com.muntian.action;
 
 import org.eclipse.jface.action.Action;
-import org.eclipse.jface.dialogs.MessageDialog;
-
-import com.muntian.Main;
 
 public class OpenMenuAction extends Action {
 	public String getText() {
